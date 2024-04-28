@@ -2,6 +2,7 @@ package mobi.omegacentauri.xaccelcal;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -43,26 +44,6 @@ public class Options extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            /*
-            Make sure you have
-            <meta-data android:name="xposedminversion"
-            android:value="93" />
-            <meta-data android:name="xposedsharedprefs"
-            android:value="true"/>
-            in AndroidManifest.xml
-             */
-            PreferenceManager prefMgr = getPreferenceManager();
-            prefMgr.setSharedPreferencesName(PREFS);
-            prefMgr.setSharedPreferencesMode(MODE_WORLD_READABLE);
-            addPreferencesFromResource(R.xml.options);
-            killProcess = false;
-        }
-        catch(SecurityException e) {
-            Log.e("xaccelcal", "cannot make prefs world readable");
-            killProcess = true;
-            mustExit();
-        }
 
         Window w = getWindow();
         w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -99,6 +80,41 @@ public class Options extends PreferenceActivity {
 
         if (killProcess)
             return;
+
+        setPreferenceScreen(null);
+
+        try {
+            /*
+            Make sure you have
+            <meta-data android:name="xposedminversion"
+            android:value="93" />
+            <meta-data android:name="xposedsharedprefs"
+            android:value="true"/>
+            in AndroidManifest.xml
+             */
+            PreferenceManager prefMgr = getPreferenceManager();
+            prefMgr.setSharedPreferencesName(PREFS);
+            prefMgr.setSharedPreferencesMode(MODE_WORLD_READABLE);
+            addPreferencesFromResource(R.xml.options);
+            killProcess = false;
+        }
+        catch(SecurityException e) {
+            Log.e("xaccelcal", "cannot make prefs world readable");
+            killProcess = true;
+            mustExit();
+            return;
+        }
+
+
+        Preference autocalibrate = findPreference("autocalibrate");
+        autocalibrate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent i = new Intent(Options.this, Calibrator.class);
+                Options.this.startActivity(i);
+                return true;
+            }
+        });
 
         final Preference cur_xz = (Preference) findPreference("cur_xz");
         final Preference cur_yz = (Preference) findPreference("cur_yz");

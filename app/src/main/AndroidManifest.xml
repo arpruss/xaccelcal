@@ -29,6 +29,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Calibrator"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="xaccelcal"
+            android:launchMode="singleTask"
+            android:exported="true"
+            >
+        </activity>
+
     </application>
 
 </manifest>

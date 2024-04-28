@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="If you have a perfectly level surface, put the device on it and make the YZ correction be the negative of the current YZ angle, and then repeat for XZ. If you don't have a perfectly flat surface, do the same, but average the rotation readings between two orientations of the device differing by 180 degrees (both with screen up)."></PreferenceCategory>
+<!--    <PreferenceCategory
+        android:title="If you have a perfectly level surface, put the device on it and make the YZ correction be the negative of the current YZ angle, and then repeat for XZ. If you don't have a perfectly flat surface, do the same, but average the rotation readings between two orientations of the device differing by 180 degrees (both with screen up)."></PreferenceCategory> -->
     <EditTextPreference android:title="YZ rotation correction"
         android:summary="Angle in degrees"
         android:defaultValue="0"
@@ -28,6 +28,9 @@
         android:key="cor_xz"
         android:title="Corrected XZ rotation"
         android:summary="0"/>
+    <Preference
+        android:key="autocalibrate"
+        android:title="Launch autocorrection wizard"/>
   <!--  <PreferenceCategory
         android:key="yz_"
         android:title="Title"
