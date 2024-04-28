@@ -12,6 +12,7 @@ import java.util.HashMap;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
@@ -24,10 +25,14 @@ public class Hook implements IXposedHookLoadPackage {
 //        XposedBridge.log("handleLoadPackage "+lpparam.packageName);
         XSharedPreferences prefs = new XSharedPreferences(Options.class.getPackage().getName(), Options.PREFS);
 
-        double yz = Options.parseAngle(prefs.getString(Options.PREF_XZ, "0"));
-        double xz = Options.parseAngle(prefs.getString(Options.PREF_YZ, "0"));
-        if (!lpparam.packageName.equals("mobi.omegacentauri.xaccelcal"))
+        if (!lpparam.packageName.equals("mobi.omegacentauri.xaccelcal")) {
+            double yz = Options.parseAngle(prefs.getString(Options.PREF_YZ, "0"));
+            double xz = Options.parseAngle(prefs.getString(Options.PREF_XZ, "0"));
+
+            XposedBridge.log("xaccelcal: "+yz+" "+xz);
+
             hookCalibration(lpparam, yz, xz);
+        }
     }
 
     private void hookCalibration(LoadPackageParam lpparam, final double yz, final double xz) {
