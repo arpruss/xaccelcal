@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:summary="Activate for the apps you are tweaking in your xposed manager."
-    >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="If you have a perfectly level surface, put the device on it and make the YZ correction be the negative of the current YZ angle, and then repeat for XZ. If you don't have a perfectly flat surface, do the same, but average the rotation readings between two orientations of the device differing by 180 degrees (both with screen up)."></PreferenceCategory>
     <EditTextPreference android:title="YZ rotation correction"
         android:summary="Angle in degrees"
         android:defaultValue="0"
@@ -14,11 +14,19 @@
         android:key="xz" />
     <Preference
         android:key="cur_yz"
-        android:title="Current yz rotation"
+        android:title="Current YZ rotation"
+        android:summary="0"/>
+    <Preference
+        android:key="cor_yz"
+        android:title="Corrected YZ rotation"
         android:summary="0"/>
     <Preference
         android:key="cur_xz"
-        android:title="Current xz rotation"
+        android:title="Current XZ rotation"
+        android:summary="0"/>
+    <Preference
+        android:key="cor_xz"
+        android:title="Corrected XZ rotation"
         android:summary="0"/>
   <!--  <PreferenceCategory
         android:key="yz_"

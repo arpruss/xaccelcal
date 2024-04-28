@@ -2,6 +2,8 @@
 <resources>
     <string-array name="module_scope">
         <item>eu.basicairdata.clinometer</item>
+        <item>omegacentauri.mobi.tiltstopwatch</item>
+        <item>com.stealth.stealthcorechallenge2</item>
 <!--        <item>android</item> -->
 <!--        <item>system</item> -->
     </string-array>

@@ -13,9 +13,9 @@ android {
     compileSdk 30
     defaultConfig {
         applicationId "mobi.omegacentauri.xaccelcal"
-        minSdkVersion 23
+        minSdkVersion 24
         //noinspection ExpiredTargetSdkVersion,EditedTargetSdkVersion
-        targetSdkVersion 23
+        targetSdkVersion 30
         versionCode 1
         versionName "0.01"
     }

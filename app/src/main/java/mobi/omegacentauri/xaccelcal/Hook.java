@@ -29,7 +29,7 @@ public class Hook implements IXposedHookLoadPackage {
             double yz = Options.parseAngle(prefs.getString(Options.PREF_YZ, "0"));
             double xz = Options.parseAngle(prefs.getString(Options.PREF_XZ, "0"));
 
-            XposedBridge.log("xaccelcal: "+yz+" "+xz);
+            XposedBridge.log("xaccelcal: "+yz +" "+xz);
 
             hookCalibration(lpparam, yz, xz);
         }
