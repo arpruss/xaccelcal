@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:summary="Activate for the apps you are tweaking in your xposed manager."
+    >
+    <EditTextPreference android:title="YZ rotation correction"
+        android:summary="Angle in degrees"
+        android:defaultValue="0"
+        android:inputType="numberSigned|numberDecimal"
+        android:key="yz" />
+    <EditTextPreference android:title="XZ rotation correction"
+        android:summary="Angle in degrees"
+        android:defaultValue="0"
+        android:inputType="numberSigned|numberDecimal"
+        android:key="xz" />
+    <Preference
+        android:key="cur_yz"
+        android:title="Current yz rotation"
+        android:summary="0"/>
+    <Preference
+        android:key="cur_xz"
+        android:title="Current xz rotation"
+        android:summary="0"/>
+  <!--  <PreferenceCategory
+        android:key="yz_"
+        android:title="Title"
+        android:summary="summar"></PreferenceCategory> -->
+
+
+</PreferenceScreen>
